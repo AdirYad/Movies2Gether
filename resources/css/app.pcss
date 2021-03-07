@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*:focus {
+    outline: none;
+}
+
+:root {
+    --base-white: #fafafa;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.scale {
+    transform: scale(0.9);
+    transition-duration: 300ms;
+}
+
+.scale:hover {
+    transform: scale(1);
+}
+
+#my-video {
+    width: calc(100vw - 288px) !important;
+    height: 100vh !important;
+}
