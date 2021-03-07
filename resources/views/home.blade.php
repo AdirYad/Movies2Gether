@@ -7,7 +7,6 @@
         <title>Movies2Gether</title>
 
         <link rel="icon" href="{{ URL::asset('storage/assets/Icon.png') }}" type="image/x-icon"/>
-        <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     </head>
     <body class="antialiased">
@@ -15,7 +14,6 @@
             <App></App>
         </div>
 
-        <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

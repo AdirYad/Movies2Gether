@@ -56,7 +56,7 @@ class TimelineController extends Controller
             TimelinePlayed::dispatch($timeline);
         }
 
-        if ($messagePayload['message']) {
+        if (isset($messagePayload['message'])) {
             MessageCreated::dispatch($timeline->message()->create($messagePayload));
         }
 
