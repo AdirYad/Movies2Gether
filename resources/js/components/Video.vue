@@ -9,7 +9,9 @@
         </video>
         <div class="controls" :class="{ 'paused' : ! isPlaying }">
             <div ref="progressBarContainer" class="progress-bar-container tw-relative tw-duration-300 tw-w-full tw-bg-gray-800 tw-cursor-pointer" style="direction: ltr">
-                <div v-if="isHovering.place" class="progress-hover" :style="`left: ${isHovering.place}px`" v-tooltip="isHovering.timeline" />
+                <div v-if="isHovering.place" class="progress-hover" :style="`left: ${isHovering.place}px`" v-tooltip="isHovering.timeline">
+                    <img src="/storage/assets/heart.png" alt="heart">
+                </div>
                 <div class="progress-bar tw-duration-300" :style="`width: ${progressBarWidth}%`" />
             </div>
             <div v-if="video" class="tw-w-full tw-h-12 tw-flex tw-items-center buttons tw-px-4">
@@ -233,7 +235,6 @@ export default {
 
         createAutoTimelinesInterval() {
             this.autoTimelinesInterval = setInterval(() => {
-                console.log('interval')
                 this.storeTimeline();
             }, 30000)
         },
@@ -280,17 +281,15 @@ export default {
 
 .progress-bar {
     height: 8px;
-    background-color: rgba(255, 69, 0, 0.5);
+    background-color: var(--base-bg-pink);
 }
 
 .progress-hover {
-    background-color: rgba(255, 69, 0, 0.5);
     position: absolute;
-    height: 18px;
-    width: 18px;
+    height: 24px;
+    width: 24px;
     top: 50%;
     bottom: 50%;
-    border: 4px solid white;
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
@@ -321,10 +320,10 @@ button {
 
 <style>
 .vue-slider-process {
-    background-color: rgba(255, 69, 0, 0.5) !important;
+    background-color: var(--base-bg-pink) !important;
 }
 
 .vue-slider-dot-handle {
-    border: 2px solid rgba(255, 69, 0, 0.5) !important;
+    border: 2px solid var(--base-bg-pink) !important;
 }
 </style>

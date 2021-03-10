@@ -39,7 +39,7 @@
                            type="text"
                            placeholder="כתב/י הודעה..."
                            autocomplete="off"
-                           class="tw-w-full tw-bg-gray-800 focus:tw-outline-none tw-placeholder-gray-300 tw-text-base-white"
+                           class="tw-bg-transparent tw-w-full focus:tw-outline-none tw-placeholder-gray-300 tw-text-base-white"
                     >
                 </label>
             </form>
