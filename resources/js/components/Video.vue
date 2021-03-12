@@ -1,12 +1,13 @@
 <template>
     <div class="c-video tw-bg-black">
-        <div v-show="hasEnded" class="tw-h-screen tw-flex tw-justify-center tw-items-center">
-            <img src="/storage/assets/posters/Hamasor 2.jpg">
+        <div class="tw-h-screen tw-flex tw-justify-center tw-items-center">
+            <img v-show="hasEnded" src="/storage/assets/movies/Saw 2/Hamasor 2.jpg">
+            <video v-show="! hasEnded" ref="video" class="tw-h-screen">
+                <source src="/storage/assets/movies/Saw 2/Hamasor 2.mp4">
+                <track src="/storage/assets/movies/Saw 2/Hamasor 2.vtt" kind="captions" srclang="he" label="Hebrew" default>
+                Your browser does not support video tag
+            </video>
         </div>
-        <video ref="video" class="tw-h-screen">
-            <source src="/storage/assets/movies/Hamasor 2.mp4">
-            Your browser does not support video tag
-        </video>
         <div class="controls" :class="{ 'paused' : ! isPlaying }">
             <div ref="progressBarContainer" class="progress-bar-container tw-relative tw-duration-300 tw-w-full tw-bg-gray-800 tw-cursor-pointer" style="direction: ltr">
                 <div v-if="isHovering.place" class="progress-hover" :style="`left: ${isHovering.place}px`" v-tooltip="isHovering.timeline">
@@ -254,7 +255,6 @@ export default {
 
 <style scoped>
 .c-video {
-    width: calc(100vw - 288px);
     height: 100vh;
     position: relative;
     overflow: hidden;

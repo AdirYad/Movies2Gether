@@ -12159,6 +12159,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -12599,7 +12600,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.c-video[data-v-21c9d7a0] {\n    width: calc(100vw - 288px);\n    height: 100vh;\n    position: relative;\n    overflow: hidden;\n}\n.c-video:hover .controls[data-v-21c9d7a0], .paused[data-v-21c9d7a0] {\n    transform: translateY(0) !important;\n}\n.controls[data-v-21c9d7a0] {\n    display: flex;\n    position: absolute;\n    bottom: 0;\n    width: 100%;\n    flex-wrap: wrap;\n    background-color: rgba(0, 0, 0, 0.7);\n    transform: translateY(100%) translateY(-2px);\n    transition: all .3s;\n}\n.progress-bar-container[data-v-21c9d7a0] {\n    height: 8px;\n}\n.progress-bar[data-v-21c9d7a0] {\n    height: 8px;\n    background-color: var(--base-bg-pink);\n}\n.progress-hover[data-v-21c9d7a0] {\n    position: absolute;\n    height: 24px;\n    width: 24px;\n    top: 50%;\n    bottom: 50%;\n    border-radius: 50%;\n    transform: translate(-50%, -50%);\n}\n.progress-bar-container[data-v-21c9d7a0]:hover, .progress-bar-container:hover > .progress-bar[data-v-21c9d7a0] {\n    height: 12px;\n}\n.buttons .btn[data-v-21c9d7a0] {\n    cursor: pointer;\n    outline: none;\n    padding: 0 10px;\n}\nbutton[data-v-21c9d7a0] {\n    outline: none;\n}\n.slide-fade-leave-active[data-v-21c9d7a0],\n.slide-fade-enter-active[data-v-21c9d7a0] {\n    transition: 300ms;\n}\n.slide-fade-enter[data-v-21c9d7a0], .slide-fade-leave-to[data-v-21c9d7a0] {\n    transform: translate(-12px, 0);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.c-video[data-v-21c9d7a0] {\n    height: 100vh;\n    position: relative;\n    overflow: hidden;\n}\n.c-video:hover .controls[data-v-21c9d7a0], .paused[data-v-21c9d7a0] {\n    transform: translateY(0) !important;\n}\n.controls[data-v-21c9d7a0] {\n    display: flex;\n    position: absolute;\n    bottom: 0;\n    width: 100%;\n    flex-wrap: wrap;\n    background-color: rgba(0, 0, 0, 0.7);\n    transform: translateY(100%) translateY(-2px);\n    transition: all .3s;\n}\n.progress-bar-container[data-v-21c9d7a0] {\n    height: 8px;\n}\n.progress-bar[data-v-21c9d7a0] {\n    height: 8px;\n    background-color: var(--base-bg-pink);\n}\n.progress-hover[data-v-21c9d7a0] {\n    position: absolute;\n    height: 24px;\n    width: 24px;\n    top: 50%;\n    bottom: 50%;\n    border-radius: 50%;\n    transform: translate(-50%, -50%);\n}\n.progress-bar-container[data-v-21c9d7a0]:hover, .progress-bar-container:hover > .progress-bar[data-v-21c9d7a0] {\n    height: 12px;\n}\n.buttons .btn[data-v-21c9d7a0] {\n    cursor: pointer;\n    outline: none;\n    padding: 0 10px;\n}\nbutton[data-v-21c9d7a0] {\n    outline: none;\n}\n.slide-fade-leave-active[data-v-21c9d7a0],\n.slide-fade-enter-active[data-v-21c9d7a0] {\n    transition: 300ms;\n}\n.slide-fade-enter[data-v-21c9d7a0], .slide-fade-leave-to[data-v-21c9d7a0] {\n    transform: translate(-12px, 0);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30317,24 +30318,55 @@ var render = function() {
   return _c("div", { staticClass: "c-video tw-bg-black" }, [
     _c(
       "div",
-      {
-        directives: [
+      { staticClass: "tw-h-screen tw-flex tw-justify-center tw-items-center" },
+      [
+        _c("img", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.hasEnded,
+              expression: "hasEnded"
+            }
+          ],
+          attrs: { src: "/storage/assets/movies/Saw 2/Hamasor 2.jpg" }
+        }),
+        _vm._v(" "),
+        _c(
+          "video",
           {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.hasEnded,
-            expression: "hasEnded"
-          }
-        ],
-        staticClass: "tw-h-screen tw-flex tw-justify-center tw-items-center"
-      },
-      [_c("img", { attrs: { src: "/storage/assets/posters/Hamasor 2.jpg" } })]
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.hasEnded,
+                expression: "! hasEnded"
+              }
+            ],
+            ref: "video",
+            staticClass: "tw-h-screen"
+          },
+          [
+            _c("source", {
+              attrs: { src: "/storage/assets/movies/Saw 2/Hamasor 2.mp4" }
+            }),
+            _vm._v(" "),
+            _c("track", {
+              attrs: {
+                src: "/storage/assets/movies/Saw 2/Hamasor 2.vtt",
+                kind: "captions",
+                srclang: "he",
+                label: "Hebrew",
+                default: ""
+              }
+            }),
+            _vm._v(
+              "\n            Your browser does not support video tag\n        "
+            )
+          ]
+        )
+      ]
     ),
-    _vm._v(" "),
-    _c("video", { ref: "video", staticClass: "tw-h-screen" }, [
-      _c("source", { attrs: { src: "/storage/assets/movies/Hamasor 2.mp4" } }),
-      _vm._v("\n        Your browser does not support video tag\n    ")
-    ]),
     _vm._v(" "),
     _c("div", { staticClass: "controls", class: { paused: !_vm.isPlaying } }, [
       _c(

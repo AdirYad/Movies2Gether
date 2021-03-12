@@ -16,7 +16,7 @@ class TimelineController extends Controller
 {
     public function index(): JsonResponse
     {
-        return response()->json(Timeline::latest()->first());
+        return response()->json(Timeline::where('created_at', '>', now()->subDay())->latest()->first());
     }
 
     public function store(StoreTimelineRequest $request): JsonResponse
