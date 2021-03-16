@@ -40,6 +40,7 @@
                            placeholder="כתב/י הודעה..."
                            autocomplete="off"
                            class="tw-bg-transparent tw-w-full focus:tw-outline-none tw-placeholder-gray-300 tw-text-base-white"
+                           :disabled="isStoring"
                     >
                 </label>
             </form>
@@ -109,24 +110,26 @@ export default {
 
         pusher.subscribe('messages')
             .bind('message.created', ({ message }) => {
-                console.log(message)
                 this.$store.commit('addMessage', message);
             });
     },
 
     methods: {
         store() {
-            if (! this.message) {
+            if (! this.message || this.isStoring) {
                 return;
             }
 
             this.$store.dispatch('storeMessage', this.message).then(() => {
+                this.message = '';
                 this.isStoring = false;
+
+                this.$refs.message.focus();
             }).catch((err) => {
                 console.log(err.response)
+                this.isStoring = false;
+                this.$refs.message.focus();
             });
-
-            this.message = '';
         },
 
         openEditor() {

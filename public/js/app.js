@@ -12009,6 +12009,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Chat',
@@ -12039,7 +12040,6 @@ __webpack_require__.r(__webpack_exports__);
     });
     pusher.subscribe('messages').bind('message.created', function (_ref) {
       var message = _ref.message;
-      console.log(message);
 
       _this.$store.commit('addMessage', message);
     });
@@ -12048,16 +12048,21 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var _this2 = this;
 
-      if (!this.message) {
+      if (!this.message || this.isStoring) {
         return;
       }
 
       this.$store.dispatch('storeMessage', this.message).then(function () {
+        _this2.message = '';
         _this2.isStoring = false;
+
+        _this2.$refs.message.focus();
       })["catch"](function (err) {
         console.log(err.response);
+        _this2.isStoring = false;
+
+        _this2.$refs.message.focus();
       });
-      this.message = '';
     },
     openEditor: function openEditor() {
       this.isEditing = !this.isEditing;
@@ -30166,7 +30171,8 @@ var render = function() {
                     attrs: {
                       type: "text",
                       placeholder: "כתב/י הודעה...",
-                      autocomplete: "off"
+                      autocomplete: "off",
+                      disabled: _vm.isStoring
                     },
                     domProps: { value: _vm.message },
                     on: {
