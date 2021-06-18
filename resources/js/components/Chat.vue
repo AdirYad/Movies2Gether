@@ -32,8 +32,8 @@
                 </div>
             </div>
 
-            <form @submit.prevent="store" class="tw-border-t tw-border-base-white tw-px-8 tw-py-4">
-                <label>
+            <form @submit.prevent="store" class="tw-flex tw-justify-between tw-items-center tw-border-t tw-border-base-white tw-px-8 tw-py-4">
+                <label class="tw-flex-1">
                     <input v-model="message"
                            ref="message"
                            type="text"
@@ -43,6 +43,8 @@
                            :disabled="isStoring"
                     >
                 </label>
+
+                <button type="submit" class="submit tw-h-10 tw-w-10 tw-duration-300 tw-border-2 tw-border-transparent hover:tw-border-white tw-rounded-full focus:tw-outline-none tw-mr-2" />
             </form>
         </template>
 
@@ -120,15 +122,21 @@ export default {
                 return;
             }
 
+            this.isStoring = true;
+
             this.$store.dispatch('storeMessage', this.message).then(() => {
                 this.message = '';
                 this.isStoring = false;
 
-                this.$refs.message.focus();
+                this.$nextTick(() => {
+                    this.$refs.message.focus();
+                });
             }).catch((err) => {
-                console.log(err.response)
                 this.isStoring = false;
-                this.$refs.message.focus();
+
+                this.$nextTick(() => {
+                    this.$refs.message.focus();
+                });
             });
         },
 
@@ -159,3 +167,15 @@ export default {
     },
 }
 </script>
+
+<style>
+.submit {
+    background: linear-gradient(0deg, rgba(249, 168, 212, 0.2), rgba(249, 168, 212, 0.25)), url("/storage/assets/submit.jpeg") 50% no-repeat;
+    background-size: 40px;
+    transform: scale(.85);
+}
+
+.submit:hover {
+    transform: scale(1);
+}
+</style>

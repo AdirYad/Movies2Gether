@@ -1,10 +1,10 @@
 <template>
     <div class="c-video tw-bg-black">
         <div class="tw-h-screen tw-flex tw-justify-center tw-items-center">
-            <img v-show="hasEnded" src="/storage/assets/movies/Saw 2/Hamasor 2.jpg">
+            <img v-show="hasEnded" src="/storage/assets/series/Haborer/Haborer.jpg">
             <video v-show="! hasEnded" ref="video" class="tw-h-screen">
-                <source src="/storage/assets/movies/Saw 2/Hamasor 2.mp4">
-                <track src="/storage/assets/movies/Saw 2/Hamasor 2.vtt" kind="captions" srclang="he" label="Hebrew" default>
+                <source src="/storage/assets/series/Haborer/Season 1/6.mp4">
+<!--                <track src="/storage/assets/movies/Harry Potter 1/Harry Potter 1.vtt" kind="captions" srclang="he" label="Hebrew" default>-->
                 Your browser does not support video tag
             </video>
         </div>
