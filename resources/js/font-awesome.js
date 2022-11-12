@@ -6,7 +6,8 @@ import {
     faCompress,
     faVolumeUp,
     faVolumeDown,
-    faVolumeMute
+    faVolumeMute,
+    faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import {
 } from "@fortawesome/free-brands-svg-icons";
@@ -22,7 +23,8 @@ export default {
     faCompress,
     faVolumeUp,
     faVolumeDown,
-    faVolumeMute
+    faVolumeMute,
+    faPaperPlane,
 
     // Brands
 

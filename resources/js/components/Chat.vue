@@ -44,7 +44,14 @@
                     >
                 </label>
 
-                <button type="submit" class="submit tw-h-10 tw-w-10 tw-duration-300 tw-border-2 tw-border-transparent hover:tw-border-white tw-rounded-full focus:tw-outline-none tw-mr-2" />
+                <component
+                    :is="this.message && ! this.isStoring ? 'button' : 'div'"
+                    type="submit"
+                    class="tw-h-10 tw-w-10 tw-duration-300 tw-border-2 tw-border-transparent tw-rounded-full focus:tw-outline-none tw-mr-2"
+                    :class="{'hover:tw-border-white' : this.message && ! this.isStoring}"
+                >
+                    <fa-icon v-if="this.message && ! this.isStoring" icon="paper-plane" class="tw-text-white fa-flip-horizontal" />
+                </component>
             </form>
         </template>
 
@@ -167,15 +174,3 @@ export default {
     },
 }
 </script>
-
-<style>
-.submit {
-    background: linear-gradient(0deg, rgba(249, 168, 212, 0.2), rgba(249, 168, 212, 0.25)), url("/storage/assets/submit.jpeg") 50% no-repeat;
-    background-size: 40px;
-    transform: scale(.85);
-}
-
-.submit:hover {
-    transform: scale(1);
-}
-</style>

@@ -1,18 +1,16 @@
 <template>
     <div class="c-video tw-bg-black">
         <div class="tw-h-screen tw-flex tw-justify-center tw-items-center">
-            <img v-show="hasEnded" src="/storage/assets/series/Haborer/Haborer.jpg">
+            <img v-show="hasEnded" src="/storage/assets/movies/truth-or-dare/truth-or-dare.jpeg">
             <video v-show="! hasEnded" ref="video" class="tw-h-screen">
-                <source src="/storage/assets/series/Haborer/Season 1/6.mp4">
+                <source src="/storage/assets/movies/truth-or-dare/truth-or-dare.mp4">
 <!--                <track src="/storage/assets/movies/Harry Potter 1/Harry Potter 1.vtt" kind="captions" srclang="he" label="Hebrew" default>-->
                 Your browser does not support video tag
             </video>
         </div>
         <div class="controls" :class="{ 'paused' : ! isPlaying }">
             <div ref="progressBarContainer" class="progress-bar-container tw-relative tw-duration-300 tw-w-full tw-bg-gray-800 tw-cursor-pointer" style="direction: ltr">
-                <div v-if="isHovering.place" class="progress-hover" :style="`left: ${isHovering.place}px`" v-tooltip="isHovering.timeline">
-                    <img src="/storage/assets/heart.png" alt="heart">
-                </div>
+                <div v-if="isHovering.place" class="progress-hover" :style="`left: ${isHovering.place}px`" v-tooltip="isHovering.timeline" />
                 <div class="progress-bar tw-duration-300" :style="`width: ${progressBarWidth}%`" />
             </div>
             <div v-if="video" class="tw-w-full tw-h-12 tw-flex tw-items-center buttons tw-px-4">
@@ -286,12 +284,14 @@ export default {
 
 .progress-hover {
     position: absolute;
-    height: 24px;
-    width: 24px;
+    height: 18px;
+    width: 18px;
     top: 50%;
     bottom: 50%;
     border-radius: 50%;
     transform: translate(-50%, -50%);
+    background: #d83333;
+    border: 2px solid #a9a4a4;
 }
 
 .progress-bar-container:hover, .progress-bar-container:hover > .progress-bar {
